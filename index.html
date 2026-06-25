@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCO - Central de Segurança</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+
+    <div class="dashboard">
+        <header class="painel-header">
+            <div class="header-titulo">
+                <h1>CCO - REGISTRO DE OCORRÊNCIAS</h1>
+                <span class="status-sistema">SISTEMA ONLINE</span>
+            </div>
+            <div class="relogio" id="relogio-digital">00:00:00</div>
+        </header>
+        
+        <div class="estatisticas">
+            <div class="card-stat">
+                <h3>Total Registrado</h3>
+                <p id="stat-total">0</p>
+            </div>
+            <div class="card-stat alerta">
+                <h3>Atenção / Alta</h3>
+                <p id="stat-alta">0</p>
+            </div>
+            <div class="card-stat concluido">
+                <h3>Resolvidas</h3>
+                <p id="stat-resolvidas">0</p>
+            </div>
+        </div>
+        
+        <div class="painel-controle no-print">
+            <div class="input-group">
+                <input type="text" id="nova-tarefa" placeholder="Descrição da ocorrência ou patrulha...">
+                
+                <select id="local-tarefa">
+                    <option value="Sem Local">Local...</option>
+                    <option value="Estacionamento Norte">Estacionamento Norte</option>
+                    <option value="Estacionamento Sul">Estacionamento Sul</option>
+                    <option value="Praça de Alimentação">Praça de Alimentação</option>
+                    <option value="Corredor Leste">Corredor Leste</option>
+                    <option value="Corredor Centro-Leste">Corredor Centro-Leste</option>
+                    <option value="Corredor Centro-Oeste">Corredor Centro-Oeste</option>
+                    <option value="Corredor Oeste">Corredor Oeste</option>
+                    <option value="Docas / Serviços">Docas / Serviços</option>
+                    <option value="Perímetro Externo">Perímetro Externo</option>
+                    <option value="Salvar Imagens">Salvar Imagens</option>
+                    <option value="Notificação">Notificação</option>
+                </select>
+
+                <input type="text" id="equipe-tarefa" placeholder="Equipe/Viatura (Ex: Alfa, QAP 01)">
+
+                <select id="prioridade-tarefa">
+                    <option value="Rotina">🟢 Rotina</option>
+                    <option value="Atenção">🟡 Atenção</option>
+                    <option value="Emergência">🔴 Emergência</option>
+                </select>
+
+                <button id="btn-adicionar">REGISTRAR</button>
+            </div>
+
+            <div class="ferramentas-admin">
+                <div class="filtros">
+                    <button class="btn-filtro ativo" data-filtro="todas">Todas</button>
+                    <button class="btn-filtro" data-filtro="pendentes">Em Andamento</button>
+                    <button class="btn-filtro" data-filtro="concluidas">Finalizadas</button>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="busca-tarefa" placeholder="Pesquisar registro...">
+                    <button id="btn-imprimir">🖨️ Relatório de Turno</button>
+                </div>
+            </div>
+        </div>
+
+        <ul id="lista-tarefas"></ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script src="./JAVASCRIPT/script.js"></script>
+</body>
+</html>

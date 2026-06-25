@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #0b0f19;
+    color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+    min-height: 100vh;
+}
+
+.toast {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    padding: 15px 25px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    font-family: 'Roboto Mono', monospace;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    border-left: 5px solid;
+}
+
+.toast.show { transform: translateX(0); }
+.toast.error { background-color: #1e293b; border-color: #ef4444; }
+.toast.success { background-color: #1e293b; border-color: #10b981; }
+
+.dashboard {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.painel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.header-titulo h1 {
+    font-size: 1.5em;
+    color: #f8fafc;
+    letter-spacing: 1px;
+}
+
+.status-sistema {
+    font-family: 'Roboto Mono', monospace;
+    color: #10b981;
+    font-size: 0.85em;
+    font-weight: 700;
+}
+
+.relogio {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2em;
+    font-weight: 700;
+    color: #38bdf8;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.estatisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.card-stat {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 4px solid #3b82f6;
+    text-align: center;
+}
+
+.card-stat.alerta { border-color: #ef4444; }
+.card-stat.concluido { border-color: #10b981; }
+
+.card-stat h3 {
+    font-size: 0.85em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.card-stat p {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.painel-controle {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input, select, button {
+    padding: 12px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #f8fafc;
+    border-radius: 4px;
+    outline: none;
+    font-size: 0.95em;
+}
+
+input:focus, select:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+#nova-tarefa { flex: 2; min-width: 250px; }
+#local-tarefa, #equipe-tarefa, #prioridade-tarefa { flex: 1; min-width: 150px; }
+
+button {
+    background: #2563eb;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover { background: #1d4ed8; }
+
+#btn-adicionar { flex: 1; min-width: 150px; }
+#btn-imprimir { background: #475569; }
+#btn-imprimir:hover { background: #334155; }
+
+.ferramentas-admin {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #334155;
+}
+
+.filtros, .search-group {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-filtro {
+    background: transparent;
+    border: 1px solid #475569;
+    color: #94a3b8;
+}
+
+.btn-filtro.ativo {
+    background: #0f172a;
+    border-color: #38bdf8;
+    color: #38bdf8;
+}
+
+ul { list-style-type: none; }
+
+li {
+    background: #1e293b;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #3b82f6;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+li.concluida {
+    border-color: #10b981;
+    opacity: 0.6;
+}
+
+li.concluida .texto-tarefa {
+    text-decoration: line-through;
+    color: #64748b;
+}
+
+.emergencia {
+    border-color: #ef4444;
+    box-shadow: inset 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+.info-tarefa {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cabecalho-registro {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8em;
+    color: #94a3b8;
+}
+
+.texto-tarefa {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.bg-local { background: #334155; color: #cbd5e1; }
+.bg-equipe { background: #475569; color: #f8fafc; }
+.bg-emergencia { background: #ef4444; color: white; animation: pulse 2s infinite; }
+.bg-atencao { background: #eab308; color: #000; }
+.bg-rotina { background: #10b981; color: white; }
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.acoes button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+}
+
+.btn-concluir { background: #10b981; }
+.btn-concluir:hover { background: #059669; }
+.btn-excluir { background: #ef4444; }
+.btn-excluir:hover { background: #dc2626; }
+
+@media print {
+    body { background: white; color: black; padding: 0; }
+    .no-print, .acoes, .toast { display: none !important; }
+    .card-stat { border: 1px solid #ccc; color: black; }
+    .card-stat h3, .card-stat p, .relogio, .status-sistema, .header-titulo h1 { color: black; text-shadow: none; }
+    li { background: white; border: 1px solid #ccc; color: black; break-inside: avoid; }
+    .badge { border: 1px solid #000; color: #000 !important; background: transparent !important; }
+    li.concluida .texto-tarefa { color: #555; }
+}
+
+@media (max-width: 768px) {
+    li { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .acoes { width: 100%; justify-content: flex-end; }
+    .ferramentas-admin { flex-direction: column; }
+    .filtros, .search-group { width: 100%; display: flex; }
+    .filtros button, .search-group input, .search-group button { flex: 1; }
+}
